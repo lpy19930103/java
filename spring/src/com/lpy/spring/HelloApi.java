@@ -1,5 +1,6 @@
 package com.lpy.spring;
 
-public class HelloApi {
+public interface HelloApi {
+    public void sayHello();
 
 }
