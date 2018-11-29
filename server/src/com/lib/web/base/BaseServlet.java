@@ -13,20 +13,21 @@ public class BaseServlet extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.service(req, resp);
         String methodName = req.getParameter("method");
         if (StringUtils.isEmpty(methodName)) {
             methodName = "execute";
         }
         try {
-            Method method = this.getClass().getMethod(methodName, HttpServletRequest.class, HttpServletResponse.class);
+            Method method = getClass().getMethod(methodName, HttpServletRequest.class, HttpServletResponse.class);
+            if (method != null) {
+                String jspPath = (String) method.invoke(this, req, resp);
 
-            String jspPath = (String) method.invoke(this, req, resp);
+                if (jspPath != null) {
+                    req.getRequestDispatcher(jspPath).forward(req, resp);
 
-            if (StringUtils.notEmpty(jspPath)) {
-                req.getRequestDispatcher(jspPath).forward(req, resp);
-
+                }
             }
+
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

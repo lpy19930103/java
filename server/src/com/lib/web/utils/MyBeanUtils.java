@@ -21,4 +21,18 @@ public class MyBeanUtils {
         }
 
     }
+
+    public static <T> T populate(Class<T> tClass, Map<String, String[]> properties) {
+        try {
+
+            T bean = tClass.newInstance();
+            DateConverter dateConverter = new DateConverter();
+            dateConverter.setPatterns(new String[]{"yyyy-MM-dd", "yyyy-MM-dd HH:mm:ss"});
+            ConvertUtils.register(dateConverter, Date.class);
+            BeanUtils.populate(bean, properties);
+            return bean;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

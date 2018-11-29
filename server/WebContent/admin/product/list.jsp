@@ -1,5 +1,4 @@
-<%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=utf-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" pageEncoding="UTF-8"%>
 <HTML>
 	<HEAD>
 		<meta http-equiv="Content-Language" content="zh-cn">
@@ -8,7 +7,7 @@
 		<script type="text/javascript" src="${pageContext.request.contextPath}/js/public.js"></script>
 		<script type="text/javascript">
 			function addProduct(){
-				window.location.href = "${pageContext.request.contextPath}/AdminProductServlet?method=addProUI";
+				window.location.href = "${pageContext.request.contextPath}/admin/product/add.jsp";
 			}
 		</script>
 	</HEAD>
@@ -24,7 +23,10 @@
 					</tr>
 					<tr>
 						<td class="ta_01" align="right">
-							<button type="button" id="add" name="add" value="添加" class="button_add" onclick="addProduct()">&#28155;&#21152;</button>
+							<button type="button" id="add" name="add" value="添加" class="button_add" onclick="addProduct()">
+&#28155;&#21152;
+</button>
+
 						</td>
 					</tr>
 					<tr>

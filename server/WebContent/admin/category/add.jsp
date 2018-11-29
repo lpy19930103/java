@@ -1,5 +1,4 @@
-<%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=utf-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" pageEncoding="UTF-8"%>
 <HTML>
 	<HEAD>
 		<meta http-equiv="Content-Language" content="zh-cn">
@@ -8,7 +7,7 @@
 	</HEAD>
 	
 	<body>
-		<form id="userAction_save_do" name="Form1" action="${pageContext.request.contextPath}/AdminCategoryServlet?method=addCat" method="post">
+		<form id="userAction_save_do" name="Form1" action="${pageContext.request.contextPath}/" method="post">
 
 			&nbsp;
 			<table cellSpacing="1" cellPadding="5" width="100%" align="center" bgColor="#eeeeee" style="border: 1px solid #8ba7e3" border="0">

@@ -1,5 +1,4 @@
-<%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=utf-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" pageEncoding="UTF-8"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -23,27 +22,22 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/dtree.js"></script>
 	<script type="text/javascript">
 	
-	d = new dTree('d');
-	d.add('01',-1,'系统菜单树');
-	
-	d.add('0102','01','分类管理','','','mainFrame');
-	d.add('010201','0102','分类管理','${pageContext.request.contextPath}/AdminCategoryServlet?method=findAllCats','','mainFrame');
-	d.add('0104','01','商品管理');
-	d.add('010401','0104','商品管理','${pageContext.request.contextPath}/admin/product/list.jsp','','mainFrame');
-	d.add('010402','0104','已下架商品管理','${pageContext.request.contextPath}/admin/product/pushDown_list.jsp','','mainFrame');
-	d.add('0105','01','订单管理');
-	d.add('010501','0105','订单管理','${pageContext.request.contextPath}/AdminOrderServlet?method=findAllOrders','','mainFrame');
-	d.add('010502','0105','未付款的订单','${pageContext.request.contextPath}/AdminOrderServlet?method=findAllOrders&state=1','','mainFrame');
-	d.add('010503','0105','已付款订单','${pageContext.request.contextPath}/AdminOrderServlet?method=findAllOrders&state=2','','mainFrame');
-	d.add('010504','0105','已发货的订单','${pageContext.request.contextPath}/AdminOrderServlet?method=findAllOrders&state=3','','mainFrame');
-	d.add('010505','0105','已完成的订单','${pageContext.request.contextPath}/AdminOrderServlet?method=findAllOrders&state=4','','mainFrame');
-	
-	d.add('0106','01','用户管理');
-	d.add('010601','0106','A类用户管理','http://www.51cto.com','${pageContext.request.contextPath}/img/footer.jpg','mainFrame');
-	d.add('010602','0106','B类用户管理','http://www.51cto.com','${pageContext.request.contextPath}/img/footer.jpg','mainFrame');
-	
-	document.write(d);
-	
+		d = new dTree('d');
+		d.add('01',-1,'系统菜单树');
+		
+		d.add('0102','01','分类管理','','','mainFrame');
+		d.add('010201','0102','分类管理','${pageContext.request.contextPath}/admin/category/list.jsp','','mainFrame');
+		d.add('0104','01','商品管理');
+		d.add('010401','0104','商品管理','${pageContext.request.contextPath}/admin/product/list.jsp','','mainFrame');
+		d.add('010402','0104','已下架商品管理','${pageContext.request.contextPath}/admin/product/pushDown_list.jsp','','mainFrame');
+		d.add('0105','01','订单管理');
+		d.add('010501','0105','订单管理','${pageContext.request.contextPath}/admin/order/list.jsp','','mainFrame');
+		d.add('010502','0105','未付款的订单','${pageContext.request.contextPath}/admin/order/list.jsp?state=1','','mainFrame');
+		d.add('010503','0105','已付款订单','${pageContext.request.contextPath}/admin/order/list.jsp?state=2','','mainFrame');
+		d.add('010504','0105','已发货的订单','${pageContext.request.contextPath}/admin/order/list.jsp?state=3','','mainFrame');
+		d.add('010505','0105','已完成的订单','${pageContext.request.contextPath}/admin/order/list.jsp?state=4','','mainFrame');
+		document.write(d);
+		
 	</script>
 </div>	</td>
   </tr>
