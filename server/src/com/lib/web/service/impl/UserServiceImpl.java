@@ -1,6 +1,5 @@
 package com.lib.web.service.impl;
 
-import com.lib.web.dao.UserDao;
 import com.lib.web.dao.impl.UserDapImpl;
 import com.lib.web.domain.User;
 import com.lib.web.service.UserService;

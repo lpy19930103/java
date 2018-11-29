@@ -24,7 +24,7 @@ public class UserServlet extends BaseServlet {
     }
 
     public String regist(HttpServletRequest req, HttpServletResponse res) throws SQLException {
-
+        System.out.println("注册成功"+req.getParameterMap().toString());
         User user = MyBeanUtils.populate(User.class, req.getParameterMap());
         user.setUid(UUIDUtils.getUUID());
         user.setCode(UUIDUtils.getUUID64());
@@ -32,6 +32,7 @@ public class UserServlet extends BaseServlet {
         UserServiceImpl userService = new UserServiceImpl();
         userService.regist(user);
         req.setAttribute("msg", "注册成功，请邮件激活后在登录");
+        System.out.println("注册成功"+req.getParameterMap().toString());
 
         return "/jsp/login.jsp";
 

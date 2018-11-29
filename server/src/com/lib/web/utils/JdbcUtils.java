@@ -8,7 +8,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class JdbcUtils {
-    private static ComboPooledDataSource dataSource = new ComboPooledDataSource("store");
+    private static ComboPooledDataSource dataSource = new ComboPooledDataSource("lpy");
 
     public static DataSource getDataSource() {
         return dataSource;
