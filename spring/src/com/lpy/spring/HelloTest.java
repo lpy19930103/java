@@ -36,5 +36,9 @@ public class HelloTest {
         }
     }
 
+    @Test
+    public void testMail(){
+    }
+
 
 }

@@ -23,8 +23,8 @@ public class UserServlet extends BaseServlet {
         return "/jsp/register.jsp";
     }
 
-    public String regist(HttpServletRequest req, HttpServletResponse res) throws SQLException {
-        System.out.println("注册成功"+req.getParameterMap().toString());
+    public String regist(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException, SQLException {
+        System.out.println("注册成功" + req.getParameterMap().toString());
         User user = MyBeanUtils.populate(User.class, req.getParameterMap());
         user.setUid(UUIDUtils.getUUID());
         user.setCode(UUIDUtils.getUUID64());
@@ -32,9 +32,14 @@ public class UserServlet extends BaseServlet {
         UserServiceImpl userService = new UserServiceImpl();
         userService.regist(user);
         req.setAttribute("msg", "注册成功，请邮件激活后在登录");
-        System.out.println("注册成功"+req.getParameterMap().toString());
+        System.out.println("注册成功" + req.getParameterMap().toString());
 
         return "/jsp/login.jsp";
 
+    }
+
+    public String active(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        System.out.println("active code!!!");
+        return "";
     }
 }

@@ -112,49 +112,57 @@
                 <div class="form-group">
                     <label for="username" class="col-sm-2 control-label">用户名</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="username" placeholder="请输入用户名">
+                        <input name="username" type="text" class="form-control" id="username" placeholder="请输入用户名">
                         <input type="hidden" name="method" value="regist">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
                     <div class="col-sm-6">
-                        <input type="password" class="form-control" id="inputPassword3" placeholder="请输入密码">
+                        <input name="password" type="password" class="form-control" id="inputPassword3"
+                               placeholder="请输入密码">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="confirmpwd" class="col-sm-2 control-label">确认密码</label>
                     <div class="col-sm-6">
-                        <input type="password" class="form-control" id="confirmpwd" placeholder="请输入确认密码">
+                        <input name="confirmpwd" type="password" class="form-control" id="confirmpwd"
+                               placeholder="请输入确认密码">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
                     <div class="col-sm-6">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                        <input name="email" type="email" class="form-control" id="inputEmail3" placeholder="Email">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="usercaption" class="col-sm-2 control-label">姓名</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="usercaption" placeholder="请输入姓名">
+                        <input name="name" type="text" class="form-control" id="usercaption" placeholder="请输入姓名">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="telephone" class="col-sm-2 control-label">电话</label>
+                    <div class="col-sm-6">
+                        <input name="telephone" type="text" class="form-control" id="telephone" placeholder="请输入电话">
                     </div>
                 </div>
                 <div class="form-group opt">
                     <label for="inlineRadio1" class="col-sm-2 control-label">性别</label>
                     <div class="col-sm-6">
                         <label class="radio-inline">
-                            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 男
+                            <input type="radio" name="sex" id="inlineRadio1" value="0"> 男
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 女
+                            <input type="radio" name="sex" id="inlineRadio2" value="1"> 女
                         </label>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="date" class="col-sm-2 control-label">出生日期</label>
                     <div class="col-sm-6">
-                        <input type="date" class="form-control">
+                        <input name="birthday" type="date" class="form-control">
                     </div>
                 </div>
 
