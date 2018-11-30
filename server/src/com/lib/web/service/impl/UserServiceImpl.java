@@ -16,6 +16,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User login(User user) throws SQLException {
+        return new UserDaoImpl().login(user);
+    }
+
+    @Override
     public void activeUser(String code) throws SQLException {
         User user = new UserDaoImpl().findUserByCode(code);
         if (user == null) {

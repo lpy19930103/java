@@ -23,6 +23,10 @@ public class UserServlet extends BaseServlet {
         return "/jsp/register.jsp";
     }
 
+    public String loginUI(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        return "/jsp/login.jsp";
+    }
+
     public String regist(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException, SQLException {
         System.out.println("注册成功" + req.getParameterMap().toString());
         User user = MyBeanUtils.populate(User.class, req.getParameterMap());
@@ -40,15 +44,34 @@ public class UserServlet extends BaseServlet {
 
     public String active(HttpServletRequest req, HttpServletResponse res) throws Exception {
 
-        try {
-            String code = req.getParameter("code");
-            UserServiceImpl userService = new UserServiceImpl();
-            userService.activeUser(code);
-            req.setAttribute("msg", "激活成功，请登录");
-        } catch (Exception e) {
-            new RuntimeException(e);
-        }
+        String code = req.getParameter("code");
+        UserServiceImpl userService = new UserServiceImpl();
+        userService.activeUser(code);
+        req.setAttribute("msg", "激活成功，请登录");
+
         return "/jsp/login.jsp";
+
+    }
+
+    public String login(HttpServletRequest req, HttpServletResponse res) throws Exception {
+
+        User user = MyBeanUtils.populate(User.class, req.getParameterMap());
+
+        UserServiceImpl userService = new UserServiceImpl();
+        User login = userService.login(user);
+        if (login == null) {
+            req.setAttribute("msg", "账号或密码错误请重试");
+            return "/jsp/login.jsp";
+        } else {
+            if (login.getState() == 0) {
+                req.setAttribute("msg", "账号未激活，请邮件激活后在登录");
+                return "/jsp/login.jsp";
+            } else {
+                req.getSession().setAttribute("loginUser", login);
+                res.sendRedirect(req.getContextPath() + "/");
+                return null;
+            }
+        }
 
     }
 }

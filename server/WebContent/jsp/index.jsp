@@ -27,7 +27,7 @@
         </div>
         <div class="col-md-3" style="padding-top:20px">
             <ol class="list-inline">
-                <li><a href="${pageContext.request.contextPath}/jsp/login.jsp">登录</a></li>
+                <li><a href="${pageContext.request.contextPath}/UserServlet?method=loginUI">登录</a></li>
                 <li><a href="${pageContext.request.contextPath}/UserServlet?method=registUI">注册</a></li>
                 <li><a href="${pageContext.request.contextPath}/jsp/cart.jsp">购物车</a></li>
                 <li><a href="${pageContext.request.contextPath}/jsp/order_list.jsp">我的订单</a></li>

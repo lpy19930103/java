@@ -9,5 +9,7 @@ public interface UserDao {
 
     void update(User user) throws SQLException;
 
+    User login(User user) throws SQLException;
+
     User findUserByCode(String code) throws SQLException;
 }
