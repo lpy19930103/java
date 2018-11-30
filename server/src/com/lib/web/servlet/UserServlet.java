@@ -74,4 +74,10 @@ public class UserServlet extends BaseServlet {
         }
 
     }
+
+    public String logout(HttpServletRequest req, HttpServletResponse res) throws Exception {
+        req.removeAttribute("loginUser");
+        res.sendRedirect(req.getContextPath() + "/UserServlet?method=loginUI");
+        return null;
+    }
 }
