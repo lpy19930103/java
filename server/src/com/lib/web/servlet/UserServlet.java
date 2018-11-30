@@ -38,8 +38,17 @@ public class UserServlet extends BaseServlet {
 
     }
 
-    public String active(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        System.out.println("active code!!!");
-        return "";
+    public String active(HttpServletRequest req, HttpServletResponse res) throws Exception {
+
+        try {
+            String code = req.getParameter("code");
+            UserServiceImpl userService = new UserServiceImpl();
+            userService.activeUser(code);
+            req.setAttribute("msg", "激活成功，请登录");
+        } catch (Exception e) {
+            new RuntimeException(e);
+        }
+        return "/jsp/login.jsp";
+
     }
 }

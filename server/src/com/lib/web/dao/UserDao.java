@@ -5,5 +5,9 @@ import com.lib.web.domain.User;
 import java.sql.SQLException;
 
 public interface UserDao {
-    public void save(User user) throws SQLException;
+    void save(User user) throws SQLException;
+
+    void update(User user) throws SQLException;
+
+    User findUserByCode(String code) throws SQLException;
 }
