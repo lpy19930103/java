@@ -1,5 +1,4 @@
 
-import com.lib.web.utils.MailUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

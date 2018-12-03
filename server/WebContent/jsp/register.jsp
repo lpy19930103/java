@@ -2,7 +2,9 @@
          pageEncoding="UTF-8" %>
 <!doctype html>
 <html>
-<head></head>
+<head>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>会员注册</title>
@@ -114,6 +116,7 @@
                     <div class="col-sm-6">
                         <input name="username" type="text" class="form-control" id="username" placeholder="请输入用户名">
                         <input type="hidden" name="method" value="regist">
+                        <span id="sl"></span>
                     </div>
                 </div>
                 <div class="form-group">
@@ -180,7 +183,7 @@
 
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <input type="submit" width="100" value="注册" name="submit" border="0"
+                        <input id="regBut" type="submit" width="100" value="注册" name="submit" border="0"
                                style="background: url('${pageContext.request.contextPath}/img/register.gif') no-repeat scroll 0 0 rgba(0, 0, 0, 0);
                                        height:35px;width:100px;color:white;">
                     </div>
@@ -216,6 +219,36 @@
 </div>
 
 </body>
+
+<script type="text/javascript">
+
+    $(function () {
+        $("#username").blur(function () {
+            var val = $(this).val();
+            if (val != "") {
+                var url = "${pageContext.request.contextPath}/UserServlet"
+                var parmas = {"method": "checkUserName", "username": val}
+                $.post(url, parmas, function (data) {
+                    if (data == 1) {
+
+                        $("#sl").html("用户名可以使用").css("color", "#0f0")
+                        $("#regBut").attr("disabled", false)
+                    } else if (data == 2) {
+                        $("#sl").html("用户名已经被注册了").css("color", "#f00")
+                        $("#regBut").attr("disabled", true)
+
+                    }
+                });
+            }
+
+
+        })
+
+    })
+
+
+</script>
+
 </html>
 
 

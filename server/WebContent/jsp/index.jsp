@@ -5,6 +5,7 @@
 <html>
 
 <head>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>XXX网络商城</title>
@@ -28,17 +29,7 @@
         </div>
         <div class="col-md-3" style="padding-top:20px">
             <ol class="list-inline">
-                <c:if test="${empty loginUser}">
-                    <li><a href="${pageContext.request.contextPath}/UserServlet?method=loginUI">登录</a></li>
-                    <li><a href="${pageContext.request.contextPath}/UserServlet?method=registUI">注册</a></li>
-                </c:if>
-                <c:if test="${not empty loginUser}">
-                    欢迎：${loginUser.name},
-                    <li><a href="${pageContext.request.contextPath}/jsp/cart.jsp">购物车</a></li>
-                    <li><a href="${pageContext.request.contextPath}/jsp/order_list.jsp">我的订单</a></li>
-                    <li><a href="${pageContext.request.contextPath}/UserServlet?method=logout">退出</a></li>
-
-                </c:if>
+                <%@include file="header.jsp" %>
             </ol>
         </div>
     </div>
@@ -62,12 +53,15 @@
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="${pageContext.request.contextPath}/jsp/product_list.jsp">手机数码<span
-                                class="sr-only">(current)</span></a></li>
-                        <li><a href="#">电脑办公</a></li>
-                        <li><a href="#">电脑办公</a></li>
-                        <li><a href="#">电脑办公</a></li>
+                    <ul class="nav navbar-nav" id="menu">
+                        <%--<li class="active"><a href="${pageContext.request.contextPath}/jsp/product_list.jsp">手机数码<span--%>
+                        <%--class="sr-only">(current)</span></a></li>--%>
+                        <%--<li><a href="#">电脑办公</a></li>--%>
+                        <%--<li><a href="#">电脑办公</a></li>--%>
+                        <%--<li><a href="#">电脑办公</a></li>--%>
+                        <%--<c:forEach items="${allCategory}" var="category">--%>
+                        <%--<li value="${category.cid}"><a href="#">${category.cname}</a></li>--%>
+                        <%--</c:forEach>--%>
                     </ul>
                     <form class="navbar-form navbar-right" role="search">
                         <div class="form-group">
@@ -338,10 +332,22 @@
             </ul>
         </div>
         <div style="text-align: center;margin-top: 5px;margin-bottom:20px;">
-            Copyright &copy; 2005-2016 传智商城 版权所有
+            Copyright &copy; 2005-2016
         </div>
     </div>
 </div>
 </body>
+
+<script type="text/javascript">
+    $(function () {
+        $.post("${pageContext.request.contextPath}/CategoryServlet", {"method": "findAll"}, function (data) {
+            $.each(data, function (i, n) {
+                var li = "<li value=''><a href='#'>" + n.cname + "</a></li>";
+                ${"#menu"}.append(li)
+            })
+        })
+
+    })
+</script>
 
 </html>

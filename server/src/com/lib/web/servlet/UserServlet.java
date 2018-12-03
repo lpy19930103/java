@@ -113,4 +113,15 @@ public class UserServlet extends BaseServlet {
         res.sendRedirect(req.getContextPath() + "/UserServlet?method=loginUI");
         return null;
     }
+
+    public void checkUserName(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+        String username = request.getParameter("username");
+        User byUserName = new UserServiceImpl().findByUserName(username);
+        if (byUserName == null) {
+            response.getWriter().println(1);
+        } else {
+            response.getWriter().println(2);
+        }
+        System.out.println(byUserName.toString());
+    }
 }

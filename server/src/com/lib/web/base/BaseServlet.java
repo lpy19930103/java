@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.sql.SQLException;
 
 public class BaseServlet extends HttpServlet {
 
@@ -33,7 +34,7 @@ public class BaseServlet extends HttpServlet {
         }
     }
 
-    public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
         return null;
     }
 }

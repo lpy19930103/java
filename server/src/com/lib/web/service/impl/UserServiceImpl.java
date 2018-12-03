@@ -31,4 +31,11 @@ public class UserServiceImpl implements UserService {
         new UserDaoImpl().update(user);
 
     }
+
+    @Override
+    public User findByUserName(String userName) throws SQLException {
+        return new UserDaoImpl().findUserByName(userName);
+    }
+
+
 }

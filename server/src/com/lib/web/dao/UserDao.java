@@ -12,4 +12,6 @@ public interface UserDao {
     User login(User user) throws SQLException;
 
     User findUserByCode(String code) throws SQLException;
+
+    User findUserByName(String userName) throws SQLException;
 }

@@ -10,4 +10,6 @@ public interface UserService {
     User login(User user) throws SQLException;
 
     void activeUser(String code) throws SQLException;
+
+    User findByUserName(String userName) throws SQLException;
 }

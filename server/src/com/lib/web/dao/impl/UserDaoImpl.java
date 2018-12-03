@@ -42,4 +42,11 @@ public class UserDaoImpl implements UserDao {
         String sql = "select * from user where code = ?";
         return queryRunner.query(sql, new BeanHandler<User>(User.class), code);
     }
+
+    @Override
+    public User findUserByName(String userName) throws SQLException {
+        QueryRunner queryRunner = new QueryRunner(JdbcUtils.getDataSource());
+        String sql = "select * from user where username = ?";
+        return queryRunner.query(sql, new BeanHandler<User>(User.class), userName);
+    }
 }
