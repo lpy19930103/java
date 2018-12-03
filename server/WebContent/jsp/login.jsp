@@ -142,7 +142,8 @@
                         <div class="col-sm-offset-2 col-sm-10">
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox"> 自动登录
+                                    <input name="autoLogin" type="checkbox" value="1"
+                                    ${not empty cookie.autoLoginCookie ?"checked = 'checked'":""}> 自动登录
                                 </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <label>
                                     <input type="checkbox"> 记住用户名

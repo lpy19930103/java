@@ -7,6 +7,7 @@ import com.lib.web.utils.MyBeanUtils;
 import com.lib.web.utils.UUIDUtils;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -63,6 +64,19 @@ public class UserServlet extends BaseServlet {
             req.setAttribute("msg", "账号或密码错误请重试");
             return "/jsp/login.jsp";
         } else {
+            if ("1".equals(req.getParameter("autoLogin"))) {
+                Cookie cookie = new Cookie("autoLoginCookie", login.getUsername() + "@" + login.getPassword());
+                cookie.setPath("/");
+                cookie.setMaxAge(60 * 60 * 24);
+                res.addCookie(cookie);
+            } else {
+                Cookie cookie = new Cookie("autoLoginCookie", "");
+                cookie.setPath("/");
+                cookie.setMaxAge(0);
+                res.addCookie(cookie);
+            }
+
+
             if (login.getState() == 0) {
                 req.setAttribute("msg", "账号未激活，请邮件激活后在登录");
                 return "/jsp/login.jsp";
