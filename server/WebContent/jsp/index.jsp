@@ -48,7 +48,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">首页</a>
+                    <a id="home" class="navbar-brand" href="#">首页</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -342,11 +342,10 @@
     $(function () {
         $.post("${pageContext.request.contextPath}/CategoryServlet", {"method": "findAll"}, function (data) {
             $.each(data, function (i, n) {
-                var li = "<li value=''><a href='#'>" + n.cname + "</a></li>";
-                ${"#menu"}.append(li)
+                var li="<li><a href='${pageContext.request.contextPath}/ProductServlet?method=findProductsWithCidAndPage&num=1&cid="+n.cid+"'>"+n.cname+"</a></li>";
+                $("#menu").append(li)
             })
         })
-
     })
 </script>
 
