@@ -117,7 +117,8 @@
                     <div class="form-group">
                         <label for="username" class="col-sm-2 control-label">用户名</label>
                         <div class="col-sm-6">
-                            <input name="username" type="text" class="form-control" id="username" placeholder="请输入用户名">
+                            <input name="username" type="text" class="form-control" id="username"
+                                   value="${cookie.remembermeCookie.value}" placeholder="请输入用户名">
                             <input type="hidden" name="method" value="login">
                         </div>
                     </div>
@@ -146,7 +147,8 @@
                                     ${not empty cookie.autoLoginCookie ?"checked = 'checked'":""}> 自动登录
                                 </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <label>
-                                    <input type="checkbox"> 记住用户名
+                                    <input name="rememberme" type="checkbox" value="1"
+                                    ${not empty cookie.remembermeCookie ?"checked = 'checked'" :""}> 记住用户名
                                 </label>
                             </div>
                         </div>

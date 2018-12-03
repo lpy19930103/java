@@ -64,6 +64,21 @@ public class UserServlet extends BaseServlet {
             req.setAttribute("msg", "账号或密码错误请重试");
             return "/jsp/login.jsp";
         } else {
+
+            if ("1".equals(req.getParameter("rememberme"))) {
+                Cookie cookie = new Cookie("remembermeCookie", login.getUsername());
+                cookie.setMaxAge(60 * 60 * 24 * 7);
+                cookie.setPath("/");
+                res.addCookie(cookie);
+
+            } else {
+                Cookie cookie = new Cookie("remembermeCookie", "");
+                cookie.setPath("/");
+                cookie.setMaxAge(0);
+                res.addCookie(cookie);
+            }
+
+
             if ("1".equals(req.getParameter("autoLogin"))) {
                 Cookie cookie = new Cookie("autoLoginCookie", login.getUsername() + "@" + login.getPassword());
                 cookie.setPath("/");
@@ -90,6 +105,10 @@ public class UserServlet extends BaseServlet {
     }
 
     public String logout(HttpServletRequest req, HttpServletResponse res) throws Exception {
+        Cookie cookie = new Cookie("autoLoginCookie", "");
+        cookie.setPath("/");
+        cookie.setMaxAge(0);
+        res.addCookie(cookie);
         req.removeAttribute("loginUser");
         res.sendRedirect(req.getContextPath() + "/UserServlet?method=loginUI");
         return null;
