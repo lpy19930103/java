@@ -18,7 +18,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="servlet-api" level="project" />
-    <orderEntry type="library" name="server" level="project" />
     <orderEntry type="library" name="commons-io-2.6" level="project" />
     <orderEntry type="library" name="activation" level="project" />
   </component>

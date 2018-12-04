@@ -68,7 +68,7 @@ public class User {
         this.birthday = birthday;
     }
 
-    public String getSex() {
+    public String   getSex() {
         return sex;
     }
 
