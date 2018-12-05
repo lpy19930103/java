@@ -1,6 +1,7 @@
 package com.lpy.spring;
 
 import com.lpy.spring.dao.Student;
+import com.lpy.spring.transaction.service.AccountServiceImpl;
 import org.aspectj.weaver.ast.Var;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,7 +16,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"classpath:aopdemo.xml", "classpath:jdbcdemo.xml"})
+@ContextConfiguration({"classpath:aopdemo.xml", "classpath:jdbcdemo.xml","classpath:account.xml"})
 public class TestDemo {
     @Resource(name = "product")
     private ProductDao productDao;
@@ -90,5 +91,13 @@ public class TestDemo {
         student.setScore(resultSet.getString("score"));
         student.setClazz(resultSet.getString("clazz"));
         return student;
+    }
+
+    @Resource(name = "accountService")
+    private AccountServiceImpl accountService;
+
+    @Test
+    public void demo6() {
+        accountService.transfer("张三", "李四", 1000);
     }
 }
