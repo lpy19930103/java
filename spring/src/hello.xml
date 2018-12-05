@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <import resource="helloworld.xml"/>
+
+    <bean id="hello" class="com.lpy.spring.HelloDao">
+        <constructor-arg name="name" value="张三"/>
+    </bean>
+    <bean id="hello2" class="com.lpy.spring.HelloDao2">
+        <property name="name" value="李四"/>
+    </bean>
+
+    <bean id="hello3" class="com.lpy.spring.HelloDao3">
+        <property name="name" value="王五"/>
+        <property name="helloDao2" ref="hello2"/>
+
+    </bean>
+
+    <!--1.6.2.3	P名称空间的属性注入（Spring2.5以后）-->
+    <bean id="hello4" class="com.lpy.spring.HelloDao4" p:name="赵六" p:helloDao3-ref="hello3"/>
+
+    <!--SpEL：Spring Expression Language，Spring的表达式语言。-->
+    <bean id="hello5" class="com.lpy.spring.HelloDao5">
+        <property name="name" value="#{hello4.getHello5Name()}"/>
+        <property name="helloDao4" value="#{hello4}"/>
+
+    </bean>
+
+    <bean id="hello6" class="com.lpy.spring.HelloDao6">
+        <property name="nameArr">
+            <list>
+                <value>nameArr1</value>
+                <value>nameArr2</value>
+                <value>nameArr3</value>
+            </list>
+        </property>
+        <property name="nameList">
+            <list>
+                <value>nameList1</value>
+                <value>nameList2</value>
+                <value>nameList3</value>
+            </list>
+        </property>
+        <property name="nameSet">
+            <set>
+                <value>nameSet1</value>
+                <value>nameSet2</value>
+                <value>nameSet3</value>
+            </set>
+        </property>
+
+        <property name="nameMap">
+            <map>
+                <entry key="nameMapK1" value="nameMapV1"/>
+                <entry key="nameMapK2" value="nameMapV2"/>
+                <entry key="nameMapK3" value="nameMapV3"/>
+            </map>
+        </property>
+
+    </bean>
+</beans>

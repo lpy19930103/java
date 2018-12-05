@@ -14,7 +14,7 @@ public class HelloTest {
     @Test
     public void testHello() {
         ApplicationContext context = new ClassPathXmlApplicationContext("helloworld.xml");
-        HelloImpl hello = context.getBean("demo", HelloImpl.class);
+        HelloApi hello = context.getBean("demo", HelloApi.class);
         hello.sayHello();
     }
 
@@ -37,7 +37,46 @@ public class HelloTest {
     }
 
     @Test
-    public void testMail(){
+    public void testUser() {
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("user.xml");
+        UserDao user = context.getBean("user", UserDao.class);
+        user.sayHello();
+    }
+
+    @Test
+    public void testHello2() {
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("hello.xml", "user.xml");
+        System.out.println("--------hello---------");
+        HelloDao hello = context.getBean("hello", HelloDao.class);
+        System.out.println(hello.getName());
+        System.out.println("--------hello2---------");
+        HelloDao2 hello2 = context.getBean("hello2", HelloDao2.class);
+        System.out.println(hello2.getName());
+        System.out.println("--------hello3---------");
+        HelloDao3 hello3 = context.getBean("hello3", HelloDao3.class);
+        System.out.println(hello3.getName());
+        System.out.println(hello3.getHelloDao2().getName());
+
+        System.out.println("--------hello4---------");
+        HelloDao4 hello4 = context.getBean("hello4", HelloDao4.class);
+        System.out.println(hello4.getName());
+        System.out.println(hello4.getHelloDao3().getName());
+
+        System.out.println("--------hello5---------");
+        HelloDao5 hello5 = context.getBean("hello5", HelloDao5.class);
+        System.out.println(hello5.getName());
+        System.out.println(hello5.getHelloDao4().getName());
+        System.out.println("--------hello6---------");
+        HelloDao6 hello6 = context.getBean("hello6", HelloDao6.class);
+        System.out.println(hello6.toString());
+
+        System.out.println("--------import---------");
+        HelloImpl demo = context.getBean("demo", HelloImpl.class);
+        demo.sayHello();
+
+        System.out.println("--------加载多个配置---------");
+        UserDao user = context.getBean("user", UserDao.class);
+        user.sayHello();
     }
 
 
