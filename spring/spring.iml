@@ -17,5 +17,8 @@
     <orderEntry type="library" name="junit-4.12" level="project" />
     <orderEntry type="library" name="hamcrest-core-1.3" level="project" />
     <orderEntry type="library" name="com.springsource.org.aopalliance-1.0.0" level="project" />
+    <orderEntry type="library" name="mysql-connector-java-5.1.7-bin" level="project" />
+    <orderEntry type="library" name="com.springsource.org.apache.commons.dbcp-1.2.2.osgi" level="project" />
+    <orderEntry type="library" name="com.springsource.com.mchange.v2.c3p0-0.9.1.2" level="project" />
   </component>
 </module>
