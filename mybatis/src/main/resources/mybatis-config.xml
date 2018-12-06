@@ -4,12 +4,26 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <!-- 根标签 -->
 <configuration>
+
+
     <properties>
         <property name="driver" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://localhost:3306/bank?useSSL=false&amp;serverTimezone=GMT"/>
         <property name="username" value="root"/>
         <property name="password" value="123"/>
     </properties>
+    <typeAliases>
+        <!--type:实体类的全路径。alias:别名，通常首字母大写-->
+        <!--<typeAlias type="com.zpc.mybatis.pojo.User" alias="User"/>-->
+        <package name="com.lpy.mybatis.pojo"/>
+    </typeAliases>
+
+    <plugins>
+        <plugin interceptor="com.lpy.mybatis.plugin.ExamplePlugin">
+            <property name="someProperty" value="100"/>
+        </plugin>
+    </plugins>
+
     <!-- 环境，可以配置多个，default：指定采用哪个环境 -->
     <environments default="test">
         <!-- id：唯一标识 -->
