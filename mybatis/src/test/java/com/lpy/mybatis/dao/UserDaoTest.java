@@ -1,7 +1,7 @@
 package com.lpy.mybatis.dao;
 
-import com.lpy.mybatis.dao.impl.StudentDaoImpl;
-import com.lpy.mybatis.pojo.Student;
+import com.lpy.mybatis.dao.impl.UserDaoImpl;
+import com.lpy.mybatis.pojo.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -11,10 +11,9 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.List;
 
-class StudentDaoTest {
-    private StudentDao studentDao;
+class UserDaoTest {
+    private UserDao userDao;
     private SqlSession sqlSession;
 
     @BeforeEach
@@ -23,48 +22,43 @@ class StudentDaoTest {
         InputStream resourceAsStream = Resources.getResourceAsStream(resource);
         SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(resourceAsStream);
         sqlSession = factory.openSession();
-        studentDao = new StudentDaoImpl(sqlSession);
+        userDao = new UserDaoImpl(sqlSession);
     }
 
     @Test
     void queryStudentById() {
-        System.out.println(studentDao.queryStudentById(5).toString());
+        System.out.println(userDao.queryUserById(2).toString());
     }
 
     @Test
     void queryStudentAll() {
-        List<Student> students = studentDao.queryStudentAll();
-        System.out.println(students.toString());
+        System.out.println(userDao.queryUserAll());
     }
 
     @Test
     void insertStudent() {
-        Student student = new Student();
-        student.setName("哈哈哈");
-        student.setAge(80);
-        student.setScore("99");
-        student.setSex("1");
-        student.setClazz("班级");
-        studentDao.insertStudent(student);
+        User user = new User();
+        user.setUsername("哈哈哈");
+        user.setPassword("123");
+        user.setSex(1);
+        userDao.insertUser(user);
         sqlSession.commit();
     }
 
     @Test
     void upDateStudent() {
-        Student student = new Student();
-        student.setName("哈哈哈");
-        student.setAge(80);
-        student.setId(3L);
-        student.setScore("99");
-        student.setSex("1");
-        student.setClazz("班级123321");
-        studentDao.upDateStudent(student);
+        User user = new User();
+        user.setId(2);
+        user.setUsername("哈哈哈123312");
+        user.setPassword("123");
+        user.setSex(1);
+        userDao.upDateUser(user);
         sqlSession.commit();
     }
 
     @Test
     void deleteStudent() {
-        studentDao.deleteStudent(2);
+        userDao.deleteUser(1);
         sqlSession.commit();
     }
 }

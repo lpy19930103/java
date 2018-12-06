@@ -1,6 +1,6 @@
 package com.lpy.mybatis;
 
-import com.lpy.mybatis.pojo.Student;
+import com.lpy.mybatis.pojo.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -18,8 +18,8 @@ public class MybatisTest {
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
         SqlSession sqlSession = sqlSessionFactory.openSession();
         try {
-            Student student = sqlSession.selectOne("StudentMapper.selectStudent", 2);
-            System.out.println(student);
+
+            System.out.println(sqlSession.selectOne("UserDaoMapper.selectUser", 2));
         } finally {
             sqlSession.close();
         }

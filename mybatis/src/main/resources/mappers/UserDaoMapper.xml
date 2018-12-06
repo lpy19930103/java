@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper:根标签，namespace：命名空间，随便写，一般保证命名空间唯一 -->
+
+<mapper namespace="UserDaoMapper">
+    <select id="selectUser" resultType="com.lpy.mybatis.pojo.User">
+        select *
+        from `user`
+        where id = #{id};
+    </select>
+    <select id="queryUserAll" resultType="com.lpy.mybatis.pojo.User">
+        select *
+        from user;
+    </select>
+
+    <insert id="insertUser" parameterType="com.lpy.mybatis.pojo.User">
+        insert into `user` (id, `username`, `password`, sex)
+        values (#{id}, #{username}, #{password}, #{sex});
+    </insert>
+
+    <update id="updateUser" parameterType="com.lpy.mybatis.pojo.User">
+        update `user`
+        <trim prefix="set" suffixOverrides=",">
+            <if test="id != null">`id` = #{id},</if>
+            <if test="username != null">username = #{username},</if>
+            <if test="password != 0">`password` = #{password},</if>
+            <if test="sex != null">sex = #{sex},</if>
+        </trim>
+        where (id = #{id});
+
+    </update>
+    <delete id="deleteUser">
+        delete
+        from `user`
+        where id = #{id};
+    </delete>
+</mapper>
