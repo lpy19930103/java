@@ -1,7 +1,9 @@
 package com.lpy.spring.transaction.service;
 
 import com.lpy.spring.transaction.dao.AccountDao;
+import org.springframework.transaction.annotation.Transactional;
 
+@Transactional
 public class AccountServiceImpl implements AccountService {
     private AccountDao accountDao;
 
