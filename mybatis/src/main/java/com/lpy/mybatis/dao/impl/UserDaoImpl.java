@@ -32,4 +32,24 @@ public class UserDaoImpl implements UserDao {
     public void deleteStudent(long id) {
         sqlSession.delete("UserDaoMapper.deleteUser", id);
     }
+
+    public User queryUserById(long id) {
+        return null;
+    }
+
+    public List<User> queryUserAll() {
+        return null;
+    }
+
+    public void insertUser(User student) {
+
+    }
+
+    public void upDateUser(User student) {
+
+    }
+
+    public void deleteUser(long id) {
+
+    }
 }
