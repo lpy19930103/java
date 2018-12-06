@@ -1,4 +1,4 @@
-package com.lpy.mybatis;
+package com.lpy.mybatis.pojo;
 
 public class Student {
     private Long id;
