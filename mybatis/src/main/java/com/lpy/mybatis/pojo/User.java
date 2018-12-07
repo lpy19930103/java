@@ -1,6 +1,6 @@
 package com.lpy.mybatis.pojo;
 
-public class User {
+public class User extends Order{
     private int id;
     private String username;
     private String password;

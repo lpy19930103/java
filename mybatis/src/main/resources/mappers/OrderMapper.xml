@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper:根标签，namespace：命名空间，随便写，一般保证命名空间唯一 ，为了使用接口动态代理，这里必须是接口的全路径名-->
+
+<mapper namespace="com.lpy.mybatis.dao.OrderMapper">
+
+    <select id="queryOrderUserByOrderNumber" resultType="com.lpy.mybatis.pojo.User">
+      select * from `order` o left join `user` u on o.user_id = u.id where o.order_number = #{number}
+    </select>
+
+    <resultMap id="OrderUserResultMap" type="com.lpy.mybatis.pojo.Order" autoMapping="true">
+
+        <id column="id" property="id"/>
+
+        <!--association:完成子对象的映射-->
+        <!--property:子对象在父对象中的属性名-->
+        <!--javaType:子对象的java类型-->
+        <!--autoMapping:完成子对象的自动映射，若开启驼峰，则按驼峰匹配-->
+        <result column="user_id" property="userId"/>
+        <result column="order_number" property="orderNumber"/>
+
+        <association property="user" javaType="com.lpy.mybatis.pojo.User" autoMapping="true">
+            <id column="user_id" property="id"/>
+        </association>
+
+
+    </resultMap>
+
+    <select id="queryOrderWithUserByOrderNumber" resultMap="OrderUserResultMap">
+        select * from `order` o left join `user` u on o.user_id = u.id where o.order_number = #{number}
+
+    </select>
+</mapper>
