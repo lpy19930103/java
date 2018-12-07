@@ -28,25 +28,14 @@
     </resultMap>
 
     <select id="queryOrderWithUserByOrderNumber" resultMap="OrderUserResultMap">
-        select * from `order` o left join `user` u on o.user_id = u.id where o.order_number = #{number}
-
+        select * from `order` o
+        left join `user` u on o.user_id = u.id
+        where o.order_number = #{number}
     </select>
 
-    <resultMap id="OrderUserDetailResultMap" type="com.lpy.mybatis.pojo.Order" autoMapping="true">
-
-        <id column="id" property="id"/>
+    <resultMap id="OrderUserDetailResultMap" type="com.lpy.mybatis.pojo.Order" autoMapping="true"
+               extends="OrderUserResultMap">
         <!--collection:定义子对象集合映射-->
-        <!--association:完成子对象的映射-->
-        <!--property:子对象在父对象中的属性名-->
-        <!--javaType:子对象的java类型-->
-        <!--autoMapping:完成子对象的自动映射，若开启驼峰，则按驼峰匹配-->
-
-
-        <association property="user" javaType="com.lpy.mybatis.pojo.User" autoMapping="true">
-            <id column="user_id" property="id"/>
-            <result column="user_id" property="userId"/>
-            <result column="order_number" property="orderNumber"/>
-        </association>
         <collection property="detailList" javaType="List" ofType="com.lpy.mybatis.pojo.OrderDetail" autoMapping="true">
             <id column="id" property="orderId"/>
             <result column="order_id" property="orderId"/>
@@ -60,7 +49,6 @@
         left join `user` u on o.user_id = u.id
         left join order_detail od on o.id = od.order_id
         where o.order_number = #{number}
-
     </select>
 
     <resultMap id="OrderUserDetailItemResultMap" type="com.lpy.mybatis.pojo.Order" autoMapping="true">
@@ -91,5 +79,24 @@
         left join order_detail od on o.id = od.order_id
         left join item i on od.item_id = i.item_id
         where o.order_number = #{number}
+    </select>
+
+
+    <resultMap id="LazyOrderUserResultMap" type="com.lpy.mybatis.pojo.Order" autoMapping="true">
+
+        <id column="id" property="id"/>
+
+        <association property="user" javaType="com.lpy.mybatis.pojo.User" autoMapping="true"
+                     select="queryUserById" column="user_id">
+        </association>
+
+    </resultMap>
+
+    <select id="queryOrderWithUserByOrderNumberLazy" resultMap="LazyOrderUserResultMap">
+        select * from `order` where order_number =#{number}
+    </select>
+
+    <select id="queryUserById" resultType="com.lpy.mybatis.pojo.User">
+        select * from `user` where id = #{id}
     </select>
 </mapper>

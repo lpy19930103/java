@@ -12,6 +12,10 @@
         <property name="username" value="root"/>
         <property name="password" value="123"/>
     </properties>
+    <settings>
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <setting name="aggressiveLazyLoading" value="false"/>
+    </settings>
     <typeAliases>
         <!--type:实体类的全路径。alias:别名，通常首字母大写-->
         <!--<typeAlias type="com.zpc.mybatis.pojo.User" alias="User"/>-->
