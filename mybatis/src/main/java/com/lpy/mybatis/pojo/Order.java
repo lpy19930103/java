@@ -1,6 +1,7 @@
 package com.lpy.mybatis.pojo;
 
 import java.util.Date;
+import java.util.List;
 
 public class Order {
     private int id;
@@ -9,6 +10,15 @@ public class Order {
     private Date created;
     private Date updated;
     private User user;
+    private List<OrderDetail> detailList;
+
+    public List<OrderDetail> getDetailList() {
+        return detailList;
+    }
+
+    public void setDetailList(List<OrderDetail> detailList) {
+        this.detailList = detailList;
+    }
 
     public User getUser() {
         return user;
@@ -67,6 +77,7 @@ public class Order {
                 ", created=" + created +
                 ", updated=" + updated +
                 ", user=" + user +
+                ", detailList=" + detailList +
                 '}';
     }
 }
