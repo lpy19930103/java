@@ -41,4 +41,12 @@ class OrderMapperTest {
         System.out.println(mapper.queryOrderWithUserAndDetailByOrderNumber("123").getUser().toString());
         System.out.println(mapper.queryOrderWithUserAndDetailByOrderNumber("123").getDetailList().toString());
     }
+
+    @Test
+    void queryOrderWithUserAndDetailItemByOrderNumber() {
+        System.out.println(mapper.queryOrderWithUserAndDetailItemByOrderNumber("123").getUser().toString());
+        System.out.println(mapper.queryOrderWithUserAndDetailItemByOrderNumber("123").getDetailList().toString());
+        System.out.println(mapper.queryOrderWithUserAndDetailItemByOrderNumber("123").getDetailList().get(0).getItem().toString());
+
+    }
 }

@@ -5,13 +5,22 @@ public class OrderDetail {
     private int orderId;
     private double totalPrice;
     private int status;
+    private Item item;
 
-    public int getId() {
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
+    public int getDetailId() {
         return detailId;
     }
 
-    public void setId(int id) {
-        this.detailId = id;
+    public void setDetailId(int detailId) {
+        this.detailId = detailId;
     }
 
     public int getOrderId() {
@@ -41,10 +50,11 @@ public class OrderDetail {
     @Override
     public String toString() {
         return "OrderDetail{" +
-                "id=" + detailId +
+                "detailId=" + detailId +
                 ", orderId=" + orderId +
                 ", totalPrice=" + totalPrice +
                 ", status=" + status +
+                ", item=" + item +
                 '}';
     }
 }
