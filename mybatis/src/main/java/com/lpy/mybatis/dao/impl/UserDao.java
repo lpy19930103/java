@@ -1,4 +1,4 @@
-package com.lpy.mybatis.dao;
+package com.lpy.mybatis.dao.impl;
 
 import com.lpy.mybatis.pojo.User;
 

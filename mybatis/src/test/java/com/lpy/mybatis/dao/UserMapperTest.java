@@ -5,13 +5,12 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 class UserMapperTest {
 
@@ -23,7 +22,7 @@ class UserMapperTest {
     // 3. Statement的resultType必须和mapper接口方法的返回类型一致
     // 4. statement的parameterType必须和mapper接口方法的参数类型一致（不一定）
 
-    @BeforeEach
+    @Before
     void setUp() throws IOException {
         String resource = "mybatis-config.xml";
         InputStream resourceAsStream = Resources.getResourceAsStream(resource);

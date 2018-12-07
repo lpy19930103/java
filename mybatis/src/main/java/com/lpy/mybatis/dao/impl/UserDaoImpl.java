@@ -1,6 +1,5 @@
 package com.lpy.mybatis.dao.impl;
 
-import com.lpy.mybatis.dao.UserDao;
 import com.lpy.mybatis.pojo.User;
 import org.apache.ibatis.session.SqlSession;
 

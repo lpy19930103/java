@@ -4,19 +4,18 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 class OrderMapperTest {
 
     private OrderMapper mapper;
 
-    @BeforeEach
+    @Before
     void setUp() throws IOException {
         String resource = "mybatis-config.xml";
         InputStream resourceAsStream = Resources.getResourceAsStream(resource);
