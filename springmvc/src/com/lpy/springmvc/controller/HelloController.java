@@ -12,7 +12,7 @@ public class HelloController {
         System.out.println("hello springmvc");
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("msg","hello springmvc");
-        modelAndView.setViewName("/WEB-INF/jsp/hello.jsp");
+        modelAndView.setViewName("hello");
         return modelAndView;
     }
 }
