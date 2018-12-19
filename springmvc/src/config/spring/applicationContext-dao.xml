@@ -23,6 +23,8 @@
         <property name="configLocation" value="classpath:config/mybatis/SqlMapConfig.xml"/>
         <!-- 设置数据源 -->
         <property name="dataSource" ref="dataSource"/>
+        <!-- 别名包扫描 -->
+        <property name="typeAliasesPackage" value="com.lpy.springmvc.pojo"/>
     </bean>
 
     <!-- 配置Mapper扫描 -->
