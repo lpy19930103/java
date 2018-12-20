@@ -1,5 +1,7 @@
 package com.lpy.springmvc.pojo;
 
+import com.lpy.springmvc.utils.StringUtils;
+
 public class Customer {
 
 
@@ -31,6 +33,19 @@ public class Customer {
     private Long cust_id;
     private String cust_level;
     private String cust_phone;
+
+    public boolean isNull() {
+        return StringUtils.isEmpty(cust_linkman) ||
+                StringUtils.isEmpty(cust_zipcode) ||
+                StringUtils.isEmpty(cust_address) ||
+                StringUtils.isEmpty(cust_mobile) ||
+                StringUtils.isEmpty(cust_createtime) ||
+                StringUtils.isEmpty(cust_source) ||
+                StringUtils.isEmpty(cust_industry) ||
+                StringUtils.isEmpty(cust_name) ||
+                StringUtils.isEmpty(cust_level) ||
+                StringUtils.isEmpty(cust_phone);
+    }
 
 
     public String getCust_user_id() {

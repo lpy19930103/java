@@ -6,6 +6,7 @@ import com.lpy.springmvc.pojo.QueryVo;
 import com.lpy.springmvc.service.BaseDictService;
 import com.lpy.springmvc.service.CustomerService;
 import com.lpy.springmvc.utils.Page;
+import com.lpy.springmvc.utils.ServerResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -57,22 +58,29 @@ public class CustomerController {
 
     @RequestMapping("update")
     @ResponseBody
-    private String updateCustomerById(Customer customer) {
+    private ServerResponse updateCustomerById(Customer customer) {
+        if (customer.isNull()) {
+            return new ServerResponse<>(0, "参数异常");
+        }
         customerService.updateCustomerById(customer);
-        return "OK";
+        return new ServerResponse<>(1, "更新成功");
     }
 
     @RequestMapping("delete")
     @ResponseBody
-    private String deleteCustomerById(Long id) {
+    private ServerResponse deleteCustomerById(Long id) {
         customerService.deleteCustomerById(id);
-        return "OK";
+        return new ServerResponse<>(1, "删除成功");
     }
 
     @RequestMapping("add")
     @ResponseBody
-    private String deleteCustomerById(Customer customer) {
+    private ServerResponse deleteCustomerById(Customer customer) {
+        if (customer.isNull()) {
+            return new ServerResponse<>(0, "参数异常");
+        }
         customerService.addCustomer(customer);
-        return "OK";
+        return new ServerResponse<>(1, "添加成功");
+
     }
 }

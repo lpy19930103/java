@@ -11,7 +11,7 @@ public class QueryVo {
     //数据库从那一条数据开始查
     private Integer start;
     //每页显示数
-    private Integer rows = 10;
+    private Integer rows = 1000;
 
     public String getCustName() {
         return custName;

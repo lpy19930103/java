@@ -547,24 +547,39 @@
 
     function updateCustomer() {
         $.post("update.action", $("#edit_customer_form").serialize(), function (data) {
-            alert("客户信息更新成功！");
-            window.location.reload();
+            console.log(data);
+            if (data.code === 1) {
+                alert("客户信息更新成功！");
+                window.location.reload();
+            } else {
+                alert(data.msg);
+            }
         });
     }
 
     function deleteCustomer(id) {
         if (confirm('确实要删除该客户吗?')) {
             $.post("delete.action", {"id": id}, function (data) {
-                alert("客户删除更新成功！");
-                window.location.reload();
+                console.log(data);
+                if (data.code === 1) {
+                    alert("客户删除更新成功！");
+                    window.location.reload();
+                } else {
+                    alert(data.msg);
+                }
             });
         }
     }
 
     function addCustomer() {
         $.post("add.action", $("#add_customer_form").serialize(), function (data) {
-            alert("客户信息添加成功！");
-            window.location.reload();
+            console.log(data);
+            if (data.code === 1) {
+                alert("客户信息添加成功！");
+                window.location.reload();
+            } else {
+                alert(data.msg);
+            }
         });
     }
 </script>
