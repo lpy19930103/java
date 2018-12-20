@@ -39,7 +39,6 @@ public class Customer {
                 StringUtils.isEmpty(cust_zipcode) ||
                 StringUtils.isEmpty(cust_address) ||
                 StringUtils.isEmpty(cust_mobile) ||
-                StringUtils.isEmpty(cust_createtime) ||
                 StringUtils.isEmpty(cust_source) ||
                 StringUtils.isEmpty(cust_industry) ||
                 StringUtils.isEmpty(cust_name) ||
